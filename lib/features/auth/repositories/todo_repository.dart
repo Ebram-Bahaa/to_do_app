@@ -14,11 +14,26 @@ class TodoRepository {
     if (user == null) {
       throw Exception("You Must Be signed To Add To Do");
     }
-    await _firestore.collection('todos').add({
+    final _doc = await _firestore.collection('todos').doc();
+    _doc.set({
+      "userId": _doc.id,
       "title": title,
       "description": description,
-      "userId": user.uid,
       "CreatedAt": FieldValue.serverTimestamp(),
     });
-  } 
+  }
+
+  Future<void> editToDo({required title, required description}) async {
+    final _doc = await _firestore.collection('todos').doc('userId');
+    _doc.update({
+      "title": title,
+      "description": description,
+      "CreatedAt": FieldValue.serverTimestamp(),
+    });
+  }
+
+  Future<void> deleteToDo() async {
+    final _doc = await _firestore.collection('todos').doc('userId');
+    _doc.delete();
+  }
 }

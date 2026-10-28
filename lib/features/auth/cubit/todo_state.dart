@@ -10,3 +10,10 @@ final class TodoFailure extends TodoState {
   String message;
   TodoFailure(this.message);
 }
+final class DeleteToDoLoading{}
+final class DeleteToDoFailure{
+  final String message;
+
+  DeleteToDoFailure(this.message);
+}
+final class DeleteToDoSuccess{}

@@ -60,6 +60,7 @@ class _AddToDoScreenState extends State<AddToDoScreen> {
             ),
             SizedBox(height: 24),
             BlocConsumer<TodoCubit, TodoState>(
+          
               listener: (context, state) {
                 if(state is TodoSuccess) {
                   ScaffoldMessenger.of(context).showSnackBar(
@@ -73,6 +74,7 @@ class _AddToDoScreenState extends State<AddToDoScreen> {
                 );
                 }
               },
+              buildWhen: (previous, current) => current is TodoLoading|| current is TodoFailure|| current is TodoSuccess,
               builder: (context, state) {
                 return ElevatedButton(
                   onPressed:state is TodoLoading?null: () {
