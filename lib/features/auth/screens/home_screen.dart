@@ -11,7 +11,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text("My To Do List")),
-      body: Center(child: Text("wait")),
+      body: Center(child: Text("to add click on the button")),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.push(
